@@ -1145,7 +1145,9 @@
         <div class="detail-body">
           <div class="badge-row">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
           <h2 class="detail-title">${item.name}</h2>
-          <div class="detail-location">${item.city}・${item.district}${item.address ? `・${item.address}` : ''}</div>
+          <div class="detail-location">${
+  [...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')
+}</div>
           <p class="detail-desc">${item.description}</p>
           <div class="detail-links">
             <a class="btn-link primary" href="${item.source}" target="_blank" rel="noopener noreferrer">看更多介紹</a>
