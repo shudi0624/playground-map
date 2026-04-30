@@ -1109,9 +1109,14 @@
 
     function renderFilters() {
       const tags = ['全部', ...allTags];
-      tagWrap.innerHTML = tags.map(tag => `
-        <button class="tag ${tag === activeTag ? 'active' : ''}" data-tag="${tag}" type="button">${tag}</button>
-      `).join('');
+      tagWrap.innerHTML = tags.map(tag => {
+  const cleanTag = tag.replace(/（.*?）/g, ''); // 👈 移除括號
+  return `
+    <button class="tag ${tag === activeTag ? 'active' : ''}" data-tag="${tag}" type="button">
+      ${cleanTag}
+    </button>
+  `;
+}).join('');
       tagWrap.querySelectorAll('[data-tag]').forEach(btn => {
         btn.addEventListener('click', () => {
           activeTag = btn.dataset.tag;
