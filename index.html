@@ -13,14 +13,15 @@
   />
   <style>
     :root {
-      --city-blue: #003b8f;
-      --city-blue-2: #0d5ab7;
-      --city-blue-3: #dfeaf8;
-      --city-gold: #f4b544;
-      --city-ink: #1b2b45;
-      --city-soft: #f6f9fd;
-      --city-line: rgba(0, 59, 143, 0.12);
-      --city-shadow: 0 14px 36px rgba(10, 33, 79, 0.12);
+      --city-blue: #4A86B8;
+      --city-blue-2: #6FA8DC;
+      --city-blue-3: #F2F7FB;
+      --city-blue-dark: #2F5F8F;
+      --city-line: #D6E4F0;
+      --city-gold: #F4B544;
+      --city-ink: #2F5F8F;
+      --city-soft: #F2F7FB;
+      --city-shadow: 0 14px 36px rgba(47, 95, 143, 0.13);
       --radius-xl: 22px;
       --radius-lg: 18px;
       --radius-md: 14px;
@@ -32,8 +33,9 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       color: var(--city-ink);
       background:
-        radial-gradient(circle at top left, rgba(244, 181, 68, 0.16), transparent 25%),
-        linear-gradient(180deg, #f9fbff 0%, #eef4fb 100%);
+        radial-gradient(circle at top left, rgba(74, 134, 184, 0.13), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(111, 168, 220, 0.16), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, var(--city-soft) 100%);
     }
 
     .wrap {
@@ -43,7 +45,7 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, rgba(0,59,143,0.96), rgba(13,90,183,0.96));
+      background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
       color: #fff;
       border-radius: 28px;
       padding: 28px 28px 24px;
@@ -143,23 +145,23 @@
       gap: 12px;
       padding: 18px 18px 14px;
       border-bottom: 1px solid var(--city-line);
-      background: linear-gradient(180deg, rgba(0,59,143,0.04), transparent);
+      background: linear-gradient(180deg, rgba(74,134,184,0.08), transparent);
     }
     .panel-title {
       font-size: 20px;
       font-weight: 800;
-      color: var(--city-blue);
+      color: var(--city-blue-dark);
     }
     .panel-sub {
       font-size: 13px;
-      color: #5f708b;
+      color: #5F7892;
       margin-top: 4px;
     }
 
     #map {
       width: 100%;
       height: 760px;
-      background: linear-gradient(180deg, #dcecff 0%, #eef5fd 100%);
+      background: linear-gradient(180deg, #EAF3FB 0%, var(--city-soft) 100%);
     }
 
     .leaflet-container {
@@ -178,14 +180,14 @@
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #fff 2px, var(--city-gold) 3px, #f1a320 55%, #dc8a00 100%);
       border: 3px solid #fff;
-      box-shadow: 0 6px 16px rgba(0, 59, 143, 0.28);
+      box-shadow: 0 6px 16px rgba(47, 95, 143, 0.28);
     }
     .play-marker::after {
       content: "";
       position: absolute;
       inset: -10px;
       border-radius: 50%;
-      background: rgba(244, 181, 68, 0.22);
+      background: rgba(111, 168, 220, 0.24);
       animation: pulse 2.2s infinite ease-out;
       z-index: -1;
     }
@@ -197,7 +199,7 @@
       font-size: 12px;
       font-weight: 800;
       color: var(--city-blue);
-      background: radial-gradient(circle at 30% 30%, #fff 5%, #ffe6ac 15%, #ffd170 58%, #f1a320 100%);
+      background: radial-gradient(circle at 30% 30%, #fff 5%, #EAF3FB 18%, #B9D7F0 58%, var(--city-blue-2) 100%);
     }
 
     @keyframes pulse {
@@ -226,7 +228,7 @@
     }
     .popup-meta {
       font-size: 13px;
-      color: #5c6a81;
+      color: #5F7892;
       margin-bottom: 8px;
     }
     .popup-desc {
@@ -244,21 +246,43 @@
     .tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
+      gap: 7px;
+      padding: 8px 12px;
       border-radius: 999px;
       font-size: 12px;
       line-height: 1.2;
-      border: 1px solid rgba(0,59,143,0.1);
-      background: #f3f7fd;
-      color: var(--city-blue);
+      border: 1px solid var(--city-line);
+      background: linear-gradient(180deg, #ffffff, var(--city-blue-3));
+      color: var(--city-blue-dark);
+      box-shadow: 0 4px 12px rgba(47, 95, 143, 0.06);
+    }
+    .tag {
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .tag:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(47, 95, 143, 0.12);
     }
     .tag.active {
-      background: linear-gradient(135deg, rgba(0,59,143,0.96), rgba(13,90,183,0.92));
+      background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
       color: #fff;
       border-color: transparent;
-      box-shadow: 0 8px 18px rgba(13, 90, 183, 0.22);
+      box-shadow: 0 8px 18px rgba(74, 134, 184, 0.24);
     }
+    .tag-icon,
+    .badge-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      font-size: 13px;
+      line-height: 1;
+    }
+    .badge-icon { background: #ffffff; }
 
     .side {
       padding: 18px;
@@ -284,8 +308,8 @@
       transition: border-color .2s ease, box-shadow .2s ease;
     }
     .search input:focus {
-      border-color: rgba(13,90,183,0.5);
-      box-shadow: 0 0 0 4px rgba(13,90,183,0.10);
+      border-color: rgba(74,134,184,0.55);
+      box-shadow: 0 0 0 4px rgba(74,134,184,0.12);
     }
     .search::before {
       content: "⌕";
@@ -293,7 +317,7 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #6b7c95;
+      color: #6B829A;
       font-size: 20px;
       line-height: 1;
     }
@@ -306,14 +330,14 @@
       border: 1px solid var(--city-line);
       border-radius: 18px;
       overflow: hidden;
-      background: linear-gradient(180deg, #fff, #fbfdff);
-      box-shadow: 0 10px 22px rgba(10, 33, 79, 0.06);
+      background: linear-gradient(180deg, #fff, #F9FCFE);
+      box-shadow: 0 10px 22px rgba(47, 95, 143, 0.08);
       margin-bottom: 16px;
     }
     .detail-media {
       position: relative;
       aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, #d6e7ff, #f7fbff);
+      background: linear-gradient(135deg, #EAF3FB, #F2F7FB);
       overflow: hidden;
     }
     .detail-media img {
@@ -333,13 +357,13 @@
     }
     .detail-location {
       font-size: 14px;
-      color: #5c6a81;
+      color: #5F7892;
       margin: 8px 0 14px;
     }
     .detail-desc {
       font-size: 15px;
       line-height: 1.8;
-      color: #22344d;
+      color: #2F5F8F;
       margin: 14px 0 0;
     }
     .detail-links {
@@ -362,12 +386,12 @@
     .btn-link.primary {
       background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
       color: #fff;
-      box-shadow: 0 10px 22px rgba(0, 59, 143, 0.22);
+      box-shadow: 0 10px 22px rgba(74, 134, 184, 0.24);
     }
     .btn-link.secondary {
-      background: #f2f6fd;
+      background: #F2F7FB;
       color: var(--city-blue);
-      border: 1px solid rgba(0,59,143,0.12);
+      border: 1px solid #D6E4F0;
     }
     .btn-link:hover { transform: translateY(-1px); }
 
@@ -385,8 +409,8 @@
     .item:hover,
     .item.is-active {
       transform: translateY(-1px);
-      border-color: rgba(13,90,183,0.35);
-      box-shadow: 0 10px 20px rgba(10,33,79,0.08);
+      border-color: rgba(74,134,184,0.45);
+      box-shadow: 0 10px 20px rgba(47,95,143,0.10);
     }
     .item-top {
       display: flex;
@@ -404,7 +428,7 @@
       display: block;
       margin-top: 6px;
       font-size: 13px;
-      color: #6b7c95;
+      color: #6B829A;
     }
     .mini-badge {
       flex: 0 0 auto;
@@ -412,17 +436,17 @@
       text-align: center;
       padding: 7px 8px;
       border-radius: 12px;
-      background: #f3f7fd;
+      background: #F2F7FB;
       color: var(--city-blue);
       font-size: 12px;
       font-weight: 800;
-      border: 1px solid rgba(0,59,143,0.08);
+      border: 1px solid rgba(74,134,184,0.12);
     }
     .item p {
       margin: 10px 0 0;
       font-size: 14px;
       line-height: 1.7;
-      color: #2f4058;
+      color: #2F5F8F;
     }
 
     .footnote {
@@ -431,7 +455,7 @@
       color: #6a7a91;
       margin-top: 14px;
       padding-top: 14px;
-      border-top: 1px dashed rgba(0,59,143,0.14);
+      border-top: 1px dashed rgba(74,134,184,0.20);
     }
 
     .placeholder {
@@ -1043,20 +1067,20 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
           <defs>
             <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-              <stop stop-color="#d8e8ff" offset="0%"/>
-              <stop stop-color="#fff3d0" offset="100%"/>
+              <stop stop-color="#EAF3FB" offset="0%"/>
+              <stop stop-color="#F2F7FB" offset="100%"/>
             </linearGradient>
           </defs>
           <rect width="1200" height="675" fill="url(#g)" rx="28"/>
-          <g fill="none" stroke="#003b8f" stroke-opacity=".14">
+          <g fill="none" stroke="#4A86B8" stroke-opacity=".14">
             <circle cx="170" cy="130" r="90"/>
             <circle cx="1010" cy="520" r="120"/>
             <path d="M120 500 C 230 430, 360 550, 470 490 S 740 420, 890 470 S 1010 530, 1120 480" stroke-width="7"/>
           </g>
           <g transform="translate(160 220)">
-            <rect x="0" y="0" width="880" height="200" rx="30" fill="#ffffff" fill-opacity=".68" stroke="#003b8f" stroke-opacity=".08"/>
-            <text x="440" y="78" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="34" font-weight="700" fill="#003b8f">${name}</text>
-            <text x="440" y="132" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="20" fill="#355079">圖片可替換為媒體庫或授權圖檔</text>
+            <rect x="0" y="0" width="880" height="200" rx="30" fill="#ffffff" fill-opacity=".68" stroke="#4A86B8" stroke-opacity=".08"/>
+            <text x="440" y="78" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="34" font-weight="700" fill="#4A86B8">${name}</text>
+            <text x="440" y="132" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="20" fill="#2F5F8F">圖片可替換為媒體庫或授權圖檔</text>
           </g>
         </svg>
       `)}`;
@@ -1074,14 +1098,57 @@
       });
     }
 
+    function parseTag(tag) {
+      const match = tag.match(/^(.*?)（(.*?)）$/);
+      return {
+        full: tag,
+        short: match ? match[1] : tag,
+        desc: match ? match[2] : ''
+      };
+    }
+
+    function iconForTag(tag) {
+      const text = tag || '';
+      if (text.includes('最大') || text.includes('最高') || text.includes('最長')) return '↗';
+      if (text.includes('最多') || text.includes('人潮')) return '★';
+      if (text.includes('挑戰') || text.includes('強') || text.includes('冒險')) return '⛰';
+      if (text.includes('自然') || text.includes('森林') || text.includes('環保')) return '葉';
+      if (text.includes('國際') || text.includes('設計')) return '獎';
+      if (text.includes('共融') || text.includes('社區') || text.includes('參與')) return '人';
+      if (text.includes('感官') || text.includes('美') || text.includes('繽紛')) return '光';
+      if (text.includes('飛行')) return '飛';
+      if (text.includes('親水')) return '水';
+      if (text.includes('復古') || text.includes('保存')) return '憶';
+      if (text.includes('翻轉') || text.includes('反差')) return '轉';
+      if (text.includes('南端')) return '南';
+      if (text.includes('早')) return '先';
+      return '玩';
+    }
+
+    function tagChipHtml(tag, isActive = false) {
+      const parsed = parseTag(tag);
+      const title = parsed.desc ? `${parsed.short}：${parsed.desc}` : parsed.short;
+      return `
+        <button class="tag ${isActive ? 'active' : ''}" data-tag="${tag}" title="${title}" aria-label="${title}" type="button">
+          <span class="tag-icon" aria-hidden="true">${iconForTag(tag)}</span>
+          <span>${parsed.short}</span>
+        </button>
+      `;
+    }
+
+    function badgeHtml(tag) {
+      const parsed = parseTag(tag);
+      return `<span class="badge" title="${parsed.desc || parsed.short}"><span class="badge-icon" aria-hidden="true">${iconForTag(tag)}</span>${parsed.full}</span>`;
+    }
+
     function popupHtml(item) {
       const image = item.image || fallbackSVG(item.name);
       return `
         <div class="popup-card">
           <img src="${image}" alt="${item.name}" onerror="this.onerror=null;this.src='${fallbackSVG(item.name)}';" />
           <h3>${item.name}</h3>
-          <div class="popup-meta">${item.city}・${item.district}</div>
-          <div class="badge-row">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
+          <div class="popup-meta">${[...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')}</div>
+          <div class="badge-row">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
           <div class="popup-desc">${item.description}</div>
         </div>
       `;
@@ -1089,14 +1156,7 @@
 
     function renderFilters() {
       const tags = ['全部', ...allTags];
-      tagWrap.innerHTML = tags.map(tag => {
-  const cleanTag = tag.replace(/（.*?）/g, ''); // 👈 移除括號
-  return `
-    <button class="tag ${tag === activeTag ? 'active' : ''}" data-tag="${tag}" type="button">
-      ${cleanTag}
-    </button>
-  `;
-}).join('');
+      tagWrap.innerHTML = tags.map(tag => tagChipHtml(tag, tag === activeTag)).join('');
       tagWrap.querySelectorAll('[data-tag]').forEach(btn => {
         btn.addEventListener('click', () => {
           activeTag = btn.dataset.tag;
@@ -1128,7 +1188,7 @@
           <img src="${image}" alt="${item.name}" onerror="this.onerror=null;this.src='${fallbackSVG(item.name)}';" />
         </div>
         <div class="detail-body">
-          <div class="badge-row">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
+          <div class="badge-row">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
           <h2 class="detail-title">${item.name}</h2>
           <div class="detail-location">${
   [...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')
@@ -1159,11 +1219,11 @@
           <div class="item-top">
             <div>
               <h4>${item.name}</h4>
-              <small>${item.city}・${item.district}</small>
+              <small>${[...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')}</small>
             </div>
             <span class="mini-badge">${item.tags.length} 指標</span>
           </div>
-          <div class="badge-row" style="margin-top:10px;">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
+          <div class="badge-row" style="margin-top:10px;">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
           <p>${item.description}</p>
         </article>
       `).join('');
@@ -1237,4 +1297,5 @@
     }, 300);
   </script>
 </body>
+</html>
 </html>
