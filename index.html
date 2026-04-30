@@ -17,11 +17,11 @@
       --city-blue-2: #6FA8DC;
       --city-blue-3: #F2F7FB;
       --city-blue-dark: #2F5F8F;
-      --city-line: #D6E4F0;
       --city-gold: #F4B544;
       --city-ink: #2F5F8F;
       --city-soft: #F2F7FB;
-      --city-shadow: 0 14px 36px rgba(47, 95, 143, 0.13);
+      --city-line: #D6E4F0;
+      --city-shadow: 0 14px 36px rgba(47, 95, 143, 0.14);
       --radius-xl: 22px;
       --radius-lg: 18px;
       --radius-md: 14px;
@@ -33,9 +33,8 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       color: var(--city-ink);
       background:
-        radial-gradient(circle at top left, rgba(74, 134, 184, 0.13), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(111, 168, 220, 0.16), transparent 28%),
-        linear-gradient(180deg, #ffffff 0%, var(--city-soft) 100%);
+        radial-gradient(circle at top left, rgba(74, 134, 184, 0.12), transparent 25%),
+        linear-gradient(180deg, #ffffff 0%, #F2F7FB 100%);
     }
 
     .wrap {
@@ -45,7 +44,7 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
+      background: linear-gradient(135deg, #4A86B8, #6FA8DC);
       color: #fff;
       border-radius: 28px;
       padding: 28px 28px 24px;
@@ -154,14 +153,14 @@
     }
     .panel-sub {
       font-size: 13px;
-      color: #5F7892;
+      color: #5f708b;
       margin-top: 4px;
     }
 
     #map {
       width: 100%;
       height: 760px;
-      background: linear-gradient(180deg, #EAF3FB 0%, var(--city-soft) 100%);
+      background: linear-gradient(180deg, #EAF3FB 0%, #F2F7FB 100%);
     }
 
     .leaflet-container {
@@ -199,7 +198,7 @@
       font-size: 12px;
       font-weight: 800;
       color: var(--city-blue);
-      background: radial-gradient(circle at 30% 30%, #fff 5%, #EAF3FB 18%, #B9D7F0 58%, var(--city-blue-2) 100%);
+      background: radial-gradient(circle at 30% 30%, #fff 5%, #EAF3FB 15%, #A9CCE8 58%, #6FA8DC 100%);
     }
 
     @keyframes pulse {
@@ -228,7 +227,7 @@
     }
     .popup-meta {
       font-size: 13px;
-      color: #5F7892;
+      color: #5c6a81;
       margin-bottom: 8px;
     }
     .popup-desc {
@@ -244,59 +243,37 @@
     }
     .badge,
     .tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  border: 1px solid #D6E4F0;
-  background: linear-gradient(180deg, #ffffff, #F2F7FB);
-  color: #2F5F8F;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-    .tag:hover {
-  transform: translateY(-1px);
-  background: #F2F7FB;
-  box-shadow: 0 6px 14px rgba(74, 134, 184, 0.12);
-}
-
-.tag.active {
-  background: linear-gradient(135deg, #4A86B8, #6FA8DC);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 8px 20px rgba(74, 134, 184, 0.25);
-}
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      border: 1px solid var(--city-line);
+      background: linear-gradient(180deg, #ffffff 0%, var(--city-soft) 100%);
+      color: var(--city-blue-dark);
+      box-shadow: 0 5px 14px rgba(47, 95, 143, 0.08);
+    }
     .tag {
       cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      min-height: 36px;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
     }
     .tag:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(47, 95, 143, 0.12);
+      border-color: rgba(74,134,184,0.45);
+      box-shadow: 0 8px 18px rgba(74,134,184,0.16);
+      background: #ffffff;
     }
     .tag.active {
-      background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
+      background: linear-gradient(135deg, #4A86B8, #6FA8DC);
       color: #fff;
       border-color: transparent;
-      box-shadow: 0 8px 18px rgba(74, 134, 184, 0.24);
+      box-shadow: 0 10px 22px rgba(74, 134, 184, 0.28);
     }
-    .tag-icon,
-    .badge-icon {
-      display: inline-grid;
-      place-items: center;
-      flex: 0 0 auto;
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.72);
-      font-size: 13px;
-      line-height: 1;
-    }
-    .badge-icon { background: #ffffff; }
 
     .side {
       padding: 18px;
@@ -331,7 +308,7 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #6B829A;
+      color: #6b7c95;
       font-size: 20px;
       line-height: 1;
     }
@@ -344,14 +321,14 @@
       border: 1px solid var(--city-line);
       border-radius: 18px;
       overflow: hidden;
-      background: linear-gradient(180deg, #fff, #F9FCFE);
-      box-shadow: 0 10px 22px rgba(47, 95, 143, 0.08);
+      background: linear-gradient(180deg, #fff, #F8FBFE);
+      box-shadow: 0 10px 22px rgba(10, 33, 79, 0.06);
       margin-bottom: 16px;
     }
     .detail-media {
       position: relative;
       aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, #EAF3FB, #F2F7FB);
+      background: linear-gradient(135deg, #F2F7FB, #ffffff);
       overflow: hidden;
     }
     .detail-media img {
@@ -371,7 +348,7 @@
     }
     .detail-location {
       font-size: 14px;
-      color: #5F7892;
+      color: #5c6a81;
       margin: 8px 0 14px;
     }
     .detail-desc {
@@ -400,12 +377,12 @@
     .btn-link.primary {
       background: linear-gradient(135deg, var(--city-blue), var(--city-blue-2));
       color: #fff;
-      box-shadow: 0 10px 22px rgba(74, 134, 184, 0.24);
+      box-shadow: 0 10px 22px rgba(0, 59, 143, 0.22);
     }
     .btn-link.secondary {
       background: #F2F7FB;
       color: var(--city-blue);
-      border: 1px solid #D6E4F0;
+      border: 1px solid var(--city-line);
     }
     .btn-link:hover { transform: translateY(-1px); }
 
@@ -442,7 +419,7 @@
       display: block;
       margin-top: 6px;
       font-size: 13px;
-      color: #6B829A;
+      color: #6b7c95;
     }
     .mini-badge {
       flex: 0 0 auto;
@@ -454,13 +431,13 @@
       color: var(--city-blue);
       font-size: 12px;
       font-weight: 800;
-      border: 1px solid rgba(74,134,184,0.12);
+      border: 1px solid var(--city-line);
     }
     .item p {
       margin: 10px 0 0;
       font-size: 14px;
       line-height: 1.7;
-      color: #2F5F8F;
+      color: #2f4058;
     }
 
     .footnote {
@@ -469,7 +446,7 @@
       color: #6a7a91;
       margin-top: 14px;
       padding-top: 14px;
-      border-top: 1px dashed rgba(74,134,184,0.20);
+      border-top: 1px dashed var(--city-line);
     }
 
     .placeholder {
@@ -1076,13 +1053,25 @@
     let activeTag = '全部';
     let activeId = playgrounds[0].id;
 
+    function formatLocation(item) {
+      return [...new Set([item.city, item.district, item.address].filter(Boolean))].join('・');
+    }
+
+    function splitTag(tag) {
+      const match = tag.match(/^(.*?)（(.*?)）$/);
+      return {
+        short: match ? match[1] : tag,
+        desc: match ? match[2] : ''
+      };
+    }
+
     function fallbackSVG(name) {
       return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
           <defs>
             <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-              <stop stop-color="#EAF3FB" offset="0%"/>
-              <stop stop-color="#F2F7FB" offset="100%"/>
+              <stop stop-color="#F2F7FB" offset="0%"/>
+              <stop stop-color="#EAF3FB" offset="100%"/>
             </linearGradient>
           </defs>
           <rect width="1200" height="675" fill="url(#g)" rx="28"/>
@@ -1112,57 +1101,14 @@
       });
     }
 
-    function parseTag(tag) {
-      const match = tag.match(/^(.*?)（(.*?)）$/);
-      return {
-        full: tag,
-        short: match ? match[1] : tag,
-        desc: match ? match[2] : ''
-      };
-    }
-
-    function iconForTag(tag) {
-      const text = tag || '';
-      if (text.includes('最大') || text.includes('最高') || text.includes('最長')) return '↗';
-      if (text.includes('最多') || text.includes('人潮')) return '★';
-      if (text.includes('挑戰') || text.includes('強') || text.includes('冒險')) return '⛰';
-      if (text.includes('自然') || text.includes('森林') || text.includes('環保')) return '葉';
-      if (text.includes('國際') || text.includes('設計')) return '獎';
-      if (text.includes('共融') || text.includes('社區') || text.includes('參與')) return '人';
-      if (text.includes('感官') || text.includes('美') || text.includes('繽紛')) return '光';
-      if (text.includes('飛行')) return '飛';
-      if (text.includes('親水')) return '水';
-      if (text.includes('復古') || text.includes('保存')) return '憶';
-      if (text.includes('翻轉') || text.includes('反差')) return '轉';
-      if (text.includes('南端')) return '南';
-      if (text.includes('早')) return '先';
-      return '玩';
-    }
-
-    function tagChipHtml(tag, isActive = false) {
-      const parsed = parseTag(tag);
-      const title = parsed.desc ? `${parsed.short}：${parsed.desc}` : parsed.short;
-      return `
-        <button class="tag ${isActive ? 'active' : ''}" data-tag="${tag}" title="${title}" aria-label="${title}" type="button">
-          <span class="tag-icon" aria-hidden="true">${iconForTag(tag)}</span>
-          <span>${parsed.short}</span>
-        </button>
-      `;
-    }
-
-    function badgeHtml(tag) {
-      const parsed = parseTag(tag);
-      return `<span class="badge" title="${parsed.desc || parsed.short}"><span class="badge-icon" aria-hidden="true">${iconForTag(tag)}</span>${parsed.full}</span>`;
-    }
-
     function popupHtml(item) {
       const image = item.image || fallbackSVG(item.name);
       return `
         <div class="popup-card">
           <img src="${image}" alt="${item.name}" onerror="this.onerror=null;this.src='${fallbackSVG(item.name)}';" />
           <h3>${item.name}</h3>
-          <div class="popup-meta">${[...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')}</div>
-          <div class="badge-row">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
+          <div class="popup-meta">${formatLocation(item)}</div>
+          <div class="badge-row">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
           <div class="popup-desc">${item.description}</div>
         </div>
       `;
@@ -1170,7 +1116,15 @@
 
     function renderFilters() {
       const tags = ['全部', ...allTags];
-      tagWrap.innerHTML = tags.map(tag => tagChipHtml(tag, tag === activeTag)).join('');
+      tagWrap.innerHTML = tags.map(tag => {
+        const label = splitTag(tag);
+        const titleText = label.desc ? `${label.short}：${label.desc}` : label.short;
+        return `
+          <button class="tag ${tag === activeTag ? 'active' : ''}" data-tag="${tag}" title="${titleText}" type="button">
+            ${label.short}
+          </button>
+        `;
+      }).join('');
       tagWrap.querySelectorAll('[data-tag]').forEach(btn => {
         btn.addEventListener('click', () => {
           activeTag = btn.dataset.tag;
@@ -1202,7 +1156,7 @@
           <img src="${image}" alt="${item.name}" onerror="this.onerror=null;this.src='${fallbackSVG(item.name)}';" />
         </div>
         <div class="detail-body">
-          <div class="badge-row">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
+          <div class="badge-row">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
           <h2 class="detail-title">${item.name}</h2>
           <div class="detail-location">${
   [...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')
@@ -1233,11 +1187,11 @@
           <div class="item-top">
             <div>
               <h4>${item.name}</h4>
-              <small>${[...new Set([item.city, item.district, item.address].filter(Boolean))].join('・')}</small>
+              <small>${item.city}・${item.district}</small>
             </div>
             <span class="mini-badge">${item.tags.length} 指標</span>
           </div>
-          <div class="badge-row" style="margin-top:10px;">${item.tags.map(tag => badgeHtml(tag)).join('')}</div>
+          <div class="badge-row" style="margin-top:10px;">${item.tags.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
           <p>${item.description}</p>
         </article>
       `).join('');
@@ -1311,5 +1265,4 @@
     }, 300);
   </script>
 </body>
-</html>
 </html>
