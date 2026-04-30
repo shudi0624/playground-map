@@ -258,6 +258,18 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+    .tag:hover {
+  transform: translateY(-1px);
+  background: #F2F7FB;
+  box-shadow: 0 6px 14px rgba(74, 134, 184, 0.12);
+}
+
+.tag.active {
+  background: linear-gradient(135deg, #4A86B8, #6FA8DC);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(74, 134, 184, 0.25);
+}
     .tag {
       cursor: pointer;
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
