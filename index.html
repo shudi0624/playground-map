@@ -475,7 +475,7 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="eyebrow">城市學風格互動圖表・台灣共融式遊戲場</div>
+      <div class="eyebrow">台灣特色共融式遊戲場</div>
       <h1>全台之最共融式遊戲場互動地圖</h1>
       <p>
         以台灣地圖呈現「全台之最」共融式遊戲場所在地。讀者可用滑鼠點擊或手機輕觸地圖標記，立即查看遊戲場的亮點、所屬指標與代表照片。
@@ -516,7 +516,7 @@
           <div id="detailCard" class="detail-card"></div>
           <div id="list" class="list"></div>
           <div class="footnote">
-            資料已依 Google Sheet「台灣新式公園共融遊戲場之最」更新。圖片欄位目前保留可替換架構；正式上線前建議填入特公盟頁面或自有媒體庫授權圖檔網址，以避免第三方網站 hotlink、權限或快取異動造成無法顯示。
+            資料與來源：台灣還我特色公園行動聯盟。
           </div>
         </div>
       </aside>
@@ -847,21 +847,6 @@
       },
       {
             "id": "pg-23",
-            "name": "后里森林公園搖籃遊戲場",
-            "city": "台中市",
-            "district": "",
-            "address": "台中市",
-            "lat": 24.308,
-            "lng": 120.735,
-            "tags": [
-                  "資料待補"
-            ],
-            "description": "試算表此列尚未填入原因與特色，可於 playgrounds 資料陣列中補上說明文字。",
-            "image": "https://ppfcc.org/wp-content/uploads/2023/07/308139_0.jpg",
-            "source": "https://ppfcc.org/findplaygrounds/"
-      },
-      {
-            "id": "pg-24",
             "name": "平鎮運動公園遊戲場",
             "city": "桃園市",
             "district": "",
@@ -876,7 +861,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-25",
+            "id": "pg-24",
             "name": "光明公園遊戲場",
             "city": "桃園市",
             "district": "",
@@ -891,7 +876,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-26",
+            "id": "pg-25",
             "name": "天母運動公園「天母夢想樂園」",
             "city": "台北市",
             "district": "",
@@ -906,7 +891,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-27",
+            "id": "pg-26",
             "name": "粘巴達童年廣場",
             "city": "新竹縣",
             "district": "",
@@ -921,7 +906,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-28",
+            "id": "pg-27",
             "name": "桃園第一河濱公園",
             "city": "桃園市",
             "district": "",
@@ -936,7 +921,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-29",
+            "id": "pg-28",
             "name": "中和員山公園「遊逸之丘」",
             "city": "新北市",
             "district": "",
@@ -951,7 +936,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-30",
+            "id": "pg-29",
             "name": "屏東縣民公園",
             "city": "屏東縣",
             "district": "",
@@ -966,7 +951,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-31",
+            "id": "pg-30",
             "name": "臺中市后里森林公園",
             "city": "台中市",
             "district": "",
@@ -981,7 +966,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-32",
+            "id": "pg-31",
             "name": "新竹縣芎林鄉特色公園公一方口獅",
             "city": "新竹縣",
             "district": "",
@@ -996,7 +981,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-33",
+            "id": "pg-32",
             "name": "台中公115公園（豬事圓滿）",
             "city": "台中市",
             "district": "",
@@ -1011,7 +996,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-34",
+            "id": "pg-33",
             "name": "台北市東陽公園魔王塔",
             "city": "台北市",
             "district": "",
@@ -1026,7 +1011,7 @@
             "source": "https://ppfcc.org/findplaygrounds/"
       },
       {
-            "id": "pg-35",
+            "id": "pg-34",
             "name": "台中梧棲魚寮公園",
             "city": "台中市",
             "district": "",
@@ -1163,7 +1148,7 @@
           <div class="detail-location">${item.city}・${item.district}${item.address ? `・${item.address}` : ''}</div>
           <p class="detail-desc">${item.description}</p>
           <div class="detail-links">
-            <a class="btn-link primary" href="${item.source}" target="_blank" rel="noopener noreferrer">查看原始頁面</a>
+            <a class="btn-link primary" href="${item.source}" target="_blank" rel="noopener noreferrer">看更多介紹</a>
             <a class="btn-link secondary" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + item.city + ' ' + item.address)}" target="_blank" rel="noopener noreferrer">打開地圖</a>
           </div>
         </div>
