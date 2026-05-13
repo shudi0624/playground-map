@@ -479,6 +479,56 @@
       padding: 14px;
     }
 
+
+
+    .filter-toggle {
+      display: none;
+    }
+
+    .filter-collapse {
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .filter-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--city-line);
+        background: linear-gradient(135deg, #4A86B8, #6FA8DC);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(74,134,184,0.18);
+      }
+
+      .filter-toggle span:last-child {
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      #tagFilters.is-collapsed {
+        max-height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        padding-top: 0;
+        opacity: 0;
+      }
+
+      #tagFilters {
+        max-height: 360px;
+        overflow-y: auto;
+        padding-top: 10px;
+        transition: max-height .25s ease, opacity .2s ease, padding-top .2s ease;
+        opacity: 1;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
     @media (max-width: 1080px) {
       .layout {
         grid-template-columns: 1fr;
@@ -535,7 +585,13 @@
             <label class="search">
               <input id="searchInput" type="search" placeholder="搜尋遊戲場、城市或指標，例如：台中、最南端" />
             </label>
-            <div id="tagFilters" class="tag-grid"></div>
+            <div class="filter-collapse">
+              <button id="filterToggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="tagFilters">
+                <span id="filterToggleText">展開指標篩選</span>
+                <span id="filterToggleIcon" aria-hidden="true">＋</span>
+              </button>
+              <div id="tagFilters" class="tag-grid is-collapsed"></div>
+            </div>
           </div>
 
           <div id="detailCard" class="detail-card"></div>
@@ -1097,6 +1153,9 @@
     const detailEl = document.getElementById('detailCard');
     const tagWrap = document.getElementById('tagFilters');
     const searchInput = document.getElementById('searchInput');
+    const filterToggle = document.getElementById('filterToggle');
+    const filterToggleText = document.getElementById('filterToggleText');
+    const filterToggleIcon = document.getElementById('filterToggleIcon');
     let activeTag = '全部';
     let activeId = playgrounds[0].id;
 
@@ -1299,6 +1358,15 @@
       renderList();
       updateMarkers();
     });
+
+    if (filterToggle) {
+      filterToggle.addEventListener('click', () => {
+        const isCollapsed = tagWrap.classList.toggle('is-collapsed');
+        filterToggle.setAttribute('aria-expanded', String(!isCollapsed));
+        filterToggleText.textContent = isCollapsed ? '展開指標篩選' : '收合指標篩選';
+        filterToggleIcon.textContent = isCollapsed ? '＋' : '－';
+      });
+    }
 
     renderFilters();
     renderList();
