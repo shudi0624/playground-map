@@ -536,7 +536,23 @@ const playgrounds = [
 ];
 const allTags=[...new Set(playgrounds.flatMap(item=>item.tags))];document.getElementById('statParks').textContent=playgrounds.length;document.getElementById('statTags').textContent=allTags.length;
 const map=L.map('map',{zoomControl:true,scrollWheelZoom:true,minZoom:6,maxZoom:12,dragging:true,tap:true}).setView([23.75,120.9],7);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:''}).addTo(map);
+// 淺灰色底圖：改用 Esri Light Gray Canvas，避免 CARTO API Key 問題
+const baseMap = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+  {
+    maxZoom: 16,
+    attribution: 'Tiles &copy; Esri'
+  }
+).addTo(map);
+
+// 地名／道路標籤層，維持原本低彩度、清爽的閱讀感
+const labelLayer = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+  {
+    maxZoom: 16,
+    attribution: ''
+  }
+).addTo(map);
 const markers=new Map(),listEl=document.getElementById('list'),detailEl=document.getElementById('detailCard'),tagWrap=document.getElementById('tagFilters'),searchInput=document.getElementById('searchInput'),filterToggle=document.getElementById('filterToggle'),filterToggleIcon=document.getElementById('filterToggleIcon');let activeTag='全部',activeId=playgrounds[0].id;
 function formatLocation(item){return[...new Set([item.city,item.district,item.address].filter(Boolean))].join('・')}function splitTag(tag){const match=tag.match(/^(.*?)（(.*?)）$/);return{short:match?match[1]:tag,desc:match?match[2]:''}}function fallbackSVG(name){return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F2F7FB" offset="0%"/><stop stop-color="#EAF3FB" offset="100%"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g)" rx="28"/><text x="600" y="310" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="34" font-weight="700" fill="#4A86B8">${name}</text><text x="600" y="365" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, sans-serif" font-size="20" fill="#2F5F8F">圖片可替換為媒體庫或授權圖檔</text></svg>`)}`}
 function makeMarker(count=1){const clusterClass=count>1?' cluster':'';return L.divIcon({html:`<div class="play-marker${clusterClass}">${count>1?count:''}</div>`,className:'play-div-icon',iconSize:count>1?[34,34]:[22,22],iconAnchor:count>1?[17,17]:[11,11],popupAnchor:[0,-12]})}function popupHtml(item){const image=item.image||fallbackSVG(item.name);return `<div class="popup-card"><img src="${image}" alt="${item.name}" onerror="this.onerror=null;this.src='${fallbackSVG(item.name)}';">${item.imageSource?`<div class="popup-credit">圖片來源：${item.imageSource}</div>`:''}<h3>${item.name}</h3><div class="popup-meta">${formatLocation(item)}</div><div class="badge-row">${item.tags.map(tag=>`<span class="badge">${tag}</span>`).join('')}</div><div class="popup-desc">${item.description}</div></div>`}
